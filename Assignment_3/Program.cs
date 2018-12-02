@@ -31,12 +31,10 @@ namespace Assignment_3
         public Node(string directory) // method to define the directory and its references 
             {
             Directory = directory; //referencing it again in the new method
-            File = new List<string>; // Defining the refernce as a list of strings
+            File = new List<string>(); // Defining the refernce as a list of strings
             LeftMostChild = null; //defining the LeftMostChild to null
             RightSibling = null; //defining the LeftMostChild to null
-
-
-}          
+            }          
 
     }
 
