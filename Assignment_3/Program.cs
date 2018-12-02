@@ -1,4 +1,15 @@
-﻿using System;
+﻿/* 
+ * COIS 2020 - Data Structures and Algorithms, Trent University Fall 2018 
+ * Assignment 3
+ * Submitted by: Nikhil Pai Ganesh - 0595517
+ *               Salaar Faisal - Student #
+ * Description: Using the concept of a binary tree to create a filing system where the root is connects to the left most child and the further directories are considered as a right Sibling and is connected to it's left sibling
+ */
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,11 +52,10 @@ namespace Assignment_3
     public class FileSystem
     {
         private Node root;
-        
         //Creates a file system with a root directory
-        public FileSystem()
+        public FileSystem(string firstNode)
         {
-
+            root = new Node(firstNode);
         }
 
         //Adds a file at the given address
