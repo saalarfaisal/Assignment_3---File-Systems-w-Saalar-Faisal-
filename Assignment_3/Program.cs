@@ -49,13 +49,13 @@ namespace Assignment_3
 
     }
 
-    public class FileSystem
+    public class FileSystem //Class with the algorithm to build the File System.
     {
-        private Node root;
         //Creates a file system with a root directory
-        public FileSystem(string firstNode)
+        private Node root; //Creating a root directory 
+        public FileSystem(string firstNode) //Method to initiate a File system and starting with a root 
         {
-            root = new Node(firstNode);
+            root = new Node(firstNode); // referencing the root directory as the first Node.
         }
 
         //Adds a file at the given address
