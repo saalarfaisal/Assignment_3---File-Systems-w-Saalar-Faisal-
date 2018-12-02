@@ -15,10 +15,28 @@ namespace Assignment_3
 
     class Node
     {
-        private string directory;
-        private List<string> file;
-        private Node leftMostChild;
-        private Node rightSibling;
+        private string directory {get; set;} // creating a sting directory 
+        private List<string> file {get; set;} //creating a list of strings called file 
+        private Node leftMostChild {get; set;} //creating a Node called leftMostChild 
+        private Node rightSibling {get; set;} //creating a Node called rightSibling
+
+        public Node(string directory, List<string>file, Node leftMostChild, Node rightSibling ) 
+            {
+            Directory = directory; //referencing it to the above created Node 
+            File = file; //referencing it to the above created node 
+            LeftMostChild = leftMostChild; //referencing it to the above created node 
+            RightSibling = rightSibling; //referencing it to the above created node
+            }
+
+        public Node(string directory) // method to define the directory and its references 
+            {
+            Directory = directory; //referencing it again in the new method
+            File = new List<string>; // Defining the refernce as a list of strings
+            LeftMostChild = null; //defining the LeftMostChild to null
+            RightSibling = null; //defining the LeftMostChild to null
+
+
+}          
 
     }
 
