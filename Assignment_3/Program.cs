@@ -2,7 +2,7 @@
  * COIS 2020 - Data Structures and Algorithms, Trent University Fall 2018 
  * Assignment 3
  * Submitted by: Nikhil Pai Ganesh - 0595517
- *               Salaar Faisal - Student #
+ *               Saalar Faisal - 0580714
  * Description: Using the concept of a binary tree to create a filing system.
  */
 
