@@ -175,7 +175,7 @@ namespace Assignment3
 
         static void Main()
         {
-            Console.Write("Root==>   ");
+            Console.Write("Enter Root Directory==>   ");
             FileSystem System = new FileSystem(Console.ReadLine());
             while (true)
             {
