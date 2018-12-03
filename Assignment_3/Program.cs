@@ -42,7 +42,7 @@ namespace Assignment3
         {
             //Creates a file system with a root directory
             public Node root; //Creating a root directory
-            int num = 0;
+            int count = 0;
         
             public FileSystem(string start) //Method to initiate a File system and starting with a root
             {
@@ -83,10 +83,10 @@ namespace Assignment3
             }
             // Adds a directory at the given address
             // Returns false if the directory already exists or the path is undefined; true otherwise
-            public bool AddDirectory(string address)
+            public bool AddDirectory(string address) // Method to add directory 
             {
-                Node current = moveAlong(address, root);
-                if (current.Directory == address)
+                Node current = moveAlong(address, root); // find the current node by moving along the address and the root 
+                if (current.Directory == address) //
                 {
                     if (current.LeftMostChild == null)
                     {
@@ -127,18 +127,18 @@ namespace Assignment3
                     return false;
             }
             // Returns the number of files in the file system
-            public int NumberFiles(Node current)
+            public int NumberFiles(Node current)    // Faulty Method 
             {
-                num++;
+                count++;
 
                 NumberFiles(current.RightSibling);
 
                 NumberFiles(current.LeftMostChild);
 
-                return num;
+                return count;
             }
             // Prints the directories in a pre-order fashion along with their files
-            public void PrintFileSystem(Node current)
+            public void PrintFileSystem(Node current) 
             {
                 if (current == null)
                     return;
