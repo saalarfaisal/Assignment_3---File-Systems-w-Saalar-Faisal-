@@ -40,6 +40,8 @@ namespace Assignment_3
                         System.RemoveFile(Console.ReadLine());
                         break;
                     case 3: 
+                        Console.Write("Address to Add the directory ==> ");
+                        System.AddDirectory(Console.ReadLine());
                     case 4: 
                     case 5: 
                     case 6: 
@@ -152,8 +154,16 @@ namespace Assignment_3
         //Returns false if the directory is not found or the path is undefined; true otherwise
         public bool RemoveDirectory(string address)
         {
-            return true; 
-            //return false; 
+                string parent = address.Remove(address.Length - 1);
+
+                Node current = moveAlong(parent, Root);
+                if (current.LeftMostChild.Directory == address)
+                {
+                    current.LeftMostChild = current.LeftMostChild.RightSibling;
+                    return true;
+                }
+                else
+                    return false;
         }
 
         //Returns the number of files in the file system
