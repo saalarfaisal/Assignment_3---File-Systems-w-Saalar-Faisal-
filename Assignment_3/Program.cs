@@ -36,6 +36,9 @@ namespace Assignment_3
                         System.AddFile(Console.ReadLine());
                         break;
                     case 2: 
+                        Console.Write("Address to remove the file ==> ");
+                        System.RemoveFile(Console.ReadLine());
+                        break;
                     case 3: 
                     case 4: 
                     case 5: 
@@ -86,7 +89,7 @@ namespace Assignment_3
         //Returns false if the file already exists or the path is undefined; true otherwise
         public bool AddFile(string address) //Adding file into the directory
         {
-            Node current = Add(address, root);  //Defining the current position using the given address and root
+            Node current = moveAlong(address, root);  //Defining the current position using the given address and root
 
             if(current.Directory == address)    //if the path entered exists in the current directory 
                 {                               // then
@@ -101,20 +104,50 @@ namespace Assignment_3
 
         //Removes the file at the given address 
         // Returns false if the file is not found or the path is undefined; true otherwise 
-        public bool RemoveFile(string address)
+        public bool RemoveFile(string address) // Removing file from the directory 
         {
-            return true; 
-            //return false; 
+            string directory = address.Remove(address.Length -1); // from the directory make the length of the address reduce by 1
+            string file = address[address.Length - 1].ToString(); 
+            
+            Node current = moveAlong(directory, root);// set the current address by moving along the directory and the root 
+            if(current.Directory == directory) //if the file exists the directory we are currently in  
+                    {                               // then 
+                    current.File.Remove(file); // remove the file 
+}else{ // is the file doesnt exist
+          
+            return false; //return false; 
+      }      
         }
 
         //Adds a directory at the given address
         //Returns false if the directory already exists or the path is undefined; true otherwise
         public bool AddDirectory(string address)
         {
-            return true; 
-            //return false;
-        }
+                Node current = moveAlong(address, root);
+                if (current.Directory == address)
+                    {
+                        if(current.LeftMostChild == null)
+                         {
+                            Console.Write("Name the directory ==>  ");
+                            current.LeftMostChild = new Node(current.Directory + Console.ReadLine());
+}else {
+                            Node temp = current.LeftMostChild;
+                            while (temp.RightSibling != null)
+                                {
+                                temp = temp.RightSibling;
 
+}
+                            Console.Write("Name the directory ==>  ");
+                            temp.RightSibling = new Node(current.Directory + Console.ReadLine());
+}
+                        return true;
+                      } 
+                    else {
+                        return false;
+}
+
+    }
+                
         //Removes the directory at the given address
         //Returns false if the directory is not found or the path is undefined; true otherwise
         public bool RemoveDirectory(string address)
