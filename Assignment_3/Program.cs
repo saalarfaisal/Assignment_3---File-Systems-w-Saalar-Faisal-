@@ -15,9 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment_3
-{
-    class MainClass
+  namespace Assignment_3{
+  class program
     {
         static void Main(string[] args)
         {
@@ -42,9 +41,16 @@ namespace Assignment_3
                     case 3: 
                         Console.Write("Address to Add the directory ==> ");
                         System.AddDirectory(Console.ReadLine());
-                    case 4: 
-                    case 5: 
-                    case 6: 
+                     case 4:
+                        Console.WriteLine("Address to remove the directory ==>  ");
+                        System.RemoveDirectory(Console.ReadLine());
+                        break;
+                    case 5:
+                        System.NumberFiles(System.Root);
+                        break;
+                    case 6:
+                        System.PrintFileSystem(System.Root);
+                        break;
                     case 7: 
                         return; 
 }
@@ -82,6 +88,7 @@ namespace Assignment_3
     {
         //Creates a file system with a root directory
         private Node root; //Creating a root directory 
+            int num = 0;
         public FileSystem(string firstNode) //Method to initiate a File system and starting with a root 
         {
             root = new Node(firstNode); // referencing the root directory as the first Node.
@@ -167,16 +174,53 @@ namespace Assignment_3
         }
 
         //Returns the number of files in the file system
-        public int NumberFiles()
+        public int NumberFiles(Node current)
         {
-            return 1; //placeholder
+                num++; 
+
+                NumberFiles(current.RightSibling);
+                NumberFiles (current.LeftMostChild);
+
+                return num;
+           
         }
 
         //Prints the directories in a pre-order fashion along with their files 
-        public void PrintFileSystem()
+        public void PrintFileSystem(Node current)
         {
-
+                if (current == null)
+                    return; 
+            Console.WriteLine(current.Directory);
+                foreach (string s in current.File)
+                    {
+                    Console.Write("-{0}", s);
+                    }
+                PrintFileSystem(current.RightSibling);
+                PrintFileSystem(current.LeftMostChild);
+                                                 
         }
+        
+        public Node moveAlong(string address,Node current)
+                {
+                {
+                if(current = null)
+                    return current;
+                if(address = current.Directory)
+                    {
+                        return current;
+                    }
+                else
+                    {
+                    if (current.RightSibling != null) 
+                        current = moveAlong(address, current.RightSibling);
+
+                    if(currrent.LeftMostChild != null)
+                        current = moveAlong(address, current.LeftMostChild);
+                    return current;
+               }
+          }     
+
     }
+  }
 }
     }
