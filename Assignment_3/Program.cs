@@ -127,15 +127,15 @@ namespace Assignment3 //namespace
                     return false; //directory is not found, return false
             }
             // Returns the number of files in the file system
-            public int NumberFiles(Node current)    // Faulty Method 
+            public int NumberFiles(Node current)    // Method to count the number of files in the file system 
             {
-                if (current == null)
-                    return count;
-                count = count + 1;
-                NumberFiles(current.RightSibling);
-                NumberFiles(current.LeftMostChild);
-                Console.WriteLine(count);
-                return count;
+                if (current == null)    //set the current position of the tree to null
+                    return count; // return the count
+                count = count + 1; 
+                NumberFiles(current.RightSibling); //Calling the right sibling 
+                NumberFiles(current.LeftMostChild); //Calling the LeftMostChild 
+                Console.WriteLine(count); //Printing out the count 
+                return count; // return the number of values in them
             }
             // Prints the directories in a pre-order fashion along with their files
             public void PrintFileSystem(Node current)  // printing the file systems in pre-order 
