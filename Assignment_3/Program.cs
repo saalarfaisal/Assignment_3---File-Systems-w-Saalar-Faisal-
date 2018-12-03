@@ -86,45 +86,45 @@ namespace Assignment3
             public bool AddDirectory(string address) // Method to add directory 
             {
                 Node current = moveAlong(address, root); // find the current node by moving along the address and the root 
-                if (current.Directory == address) //
+                if (current.Directory == address) //if the current directory is in the right adress
                 {
-                    if (current.LeftMostChild == null)
-                    {
-                        Console.Write("Name the directory ==>  ");
-                        current.LeftMostChild = new Node(current.Directory + Console.ReadLine());
+                    if (current.LeftMostChild == null) //move along the left most child until you find a null point 
+                    {                   // if the null point is found 
+                        Console.Write("Name the directory ==>  ");  // Name the directory that you want to add
+                        current.LeftMostChild = new Node(current.Directory + Console.ReadLine()); //Add the directory to the tree
                     }
-                    else
+                    else  // if there is no null point found along the left most child 
                     {
-                        Node temp = current.LeftMostChild;
-                        while (temp.RightSibling != null)
+                        Node temp = current.LeftMostChild; 
+                        while (temp.RightSibling != null) // move along the right sibling of the left most child to find the null point 
                         {
-                            temp = temp.RightSibling;
+                            temp = temp.RightSibling; // if found 
                         }
-                        Console.Write("Name the directory ==>  ");
-                        temp.RightSibling = new Node(current.Directory + Console.ReadLine());
+                        Console.Write("Name the directory ==>  "); //Name the directory that you want to add 
+                        temp.RightSibling = new Node(current.Directory + Console.ReadLine()); // Add the directory there 
                     }
-                    return true;
+                    return true; // returns true - does the above if the directory doesnt exist
                 }
-                else
+                else // else
                 {
-                    return false;
+                    return false; // return false if the directory alredy exists
                 }
 
             }
             // Removes the directory (and its subdirectories) at the given address
             // Returns false if the directory is not found or the path is undefined; true otherwise
-            public bool RemoveDirectory(string address)
-            {
-                string parent = address.Remove(address.Length - 1);
+            public bool RemoveDirectory(string address) //method to remove the directory from the file system
+            {   
+                string parent = address.Remove(address.Length - 1); // defining parent variable 
 
-                Node current = moveAlong(parent, root);
-                if (current.LeftMostChild.Directory == address)
+                Node current = moveAlong(parent, root); // find the current node by moving along the parent and the root node
+                if (current.LeftMostChild.Directory == address) // if the given adress is along the left most child
                 {
-                    current.LeftMostChild = current.LeftMostChild.RightSibling;
-                    return true;
+                    current.LeftMostChild = current.LeftMostChild.RightSibling; // the current left most child is the current left most child's right sibling 
+                    return true; // directory is found, delete it
                 }
-                else
-                    return false;
+                else // else
+                    return false; //directory is not found, return false
             }
             // Returns the number of files in the file system
             public int NumberFiles(Node current)    // Faulty Method 
@@ -138,79 +138,82 @@ namespace Assignment3
                 return count;
             }
             // Prints the directories in a pre-order fashion along with their files
-            public void PrintFileSystem(Node current) 
+            public void PrintFileSystem(Node current)  // printing the file systems in pre-order 
             {
-                if (current == null)
+                if (current == null)  
                     return;
 
-                Console.WriteLine(current.Directory);
+                Console.WriteLine(current.Directory); // print the directory
                 foreach (string d in current.File)
                 {
-                    Console.Write("-{0} ", d);
+                    Console.Write("-{0} ", d); // in a pre order treversal fashion 
                 }
 
-                PrintFileSystem(current.RightSibling);
+                PrintFileSystem(current.RightSibling); //calling the right sibling
 
-                PrintFileSystem(current.LeftMostChild);
+                PrintFileSystem(current.LeftMostChild); //calling the left most child 
             }
-            public Node moveAlong(string address, Node current)
+            public Node moveAlong(string address, Node current)     //method to navigate along the nodes to find the given address
             {
-                if (current == null)
-                    return current;
-                if (address == current.Directory)
+                if (current == null)    // if the current address is null
+                    return current;     // then return the current node 
+                if (address == current.Directory)   // if the address mentioned is the directory 
                 {
-                    return current;
+                    return current; //return current 
                 }
-                else
+                else 
                 {
-                    if (current.RightSibling != null)
-                        current = moveAlong(address, current.RightSibling);
+                    if (current.RightSibling != null) //if the current right sibling is not null
+                        current = moveAlong(address, current.RightSibling); //move along the right sibling path to find the address 
 
-                    if (current.LeftMostChild != null)
-                        current = moveAlong(address, current.LeftMostChild);
-                    return current;
+                    if (current.LeftMostChild != null) // if the current left most sibling is not null 
+                        current = moveAlong(address, current.LeftMostChild); // move along the left most sibling path to find the address
+                    return current; //return the current node it is on when the address is found 
                 }
             }
         }
 
-        static void Main()
+        static void Main() // main method to call all of the methods mentioned above
         {
-            Console.Write("Enter Root Directory==>   ");
-            FileSystem System = new FileSystem(Console.ReadLine());
+            Console.Write("Enter Root Directory==>   ");  // Prompt to ask for the root directory 
+            FileSystem System = new FileSystem(Console.ReadLine()); //read the root directory and initiate a file system 
             while (true)
             {
+                // Prompt to ask for operations to perform
                 Console.WriteLine("Contol Panel: \n Select 1 to Add a file \n Select 2 to Remove a file \n Select 3 to Add a directory \n Select 4 to Remove Directory \n Select 5 to Count the number of files \n Select 6 to Print the complete File System \n Select 7 to Exit");
-                int selection = Int32.Parse(Console.ReadLine());
-                switch (selection)
+                int operation = Int32.Parse(Console.ReadLine()); // creating an integer variable to read the above operations and Parse them per the switch-case-break operation 
+                switch (operation) // parsing the given selection of operation and parse them to identify which operation to perform as per switch-case-break
                 {
-                    case 0:
+                    case 0: // if selected 0, then break the program and loop the contol panel 
                         break;
                     case 1:
-                        Console.Write("Address to add file ==>  ");
-                        System.AddFile(Console.ReadLine());
-                        break;
+                        Console.Write("Address to add file ==>  "); // prompt to ask where to add the file 
+                        System.AddFile(Console.ReadLine()); // Calling the AddFile method to read the prompt
+                        break; //Loop again 
                     case 2:
-                        Console.Write("Address to remove the file ==> ");
-                        System.RemoveFile(Console.ReadLine());
-                        break;
+                        Console.Write("Address to remove the file ==> ");  //prompt to ask where to remove the file from 
+                        System.RemoveFile(Console.ReadLine());  // Calling the RomoveFile method to read the prompt
+                        break; // Loop Again
                     case 3:
-                        Console.Write("Address to Add the directory ==> ");
-                        System.AddDirectory(Console.ReadLine());
+                        Console.Write("Address to Add the directory ==> "); //prompt to ask where to add the directory
+                        System.AddDirectory(Console.ReadLine()); // Calling the AddDirectory method to read the prompt
                         break;
                     case 4:
-                        Console.Write("Address to remove the directory ==> ");
-                        System.RemoveDirectory(Console.ReadLine());
-                        break;
+                        Console.Write("Address to remove the directory ==> "); //prompt to ask where to remove the directory from 
+                        System.RemoveDirectory(Console.ReadLine()); //Calling the RemoveDirectory method to read the prompt
+                        break; // Loop Again
                     case 5:
-                        System.NumberFiles(System.root);
+                        System.NumberFiles(System.root); //Calling the NumberFiles method when option 5 is selected to count the number of files inserted in the file system  
                         break;
                     case 6:
-                        System.PrintFileSystem(System.root);
+                        System.PrintFileSystem(System.root); //Calling the PrintFileSystem method when option 6 is selected to print the entire file system 
                         break;
-                    case 7:
-                                 return;
+                    case 7: 
+                        return;  // break the program when option 7 is selected   
                 }
             }
         }
     }
 }
+
+// Thank You for a great Semester!
