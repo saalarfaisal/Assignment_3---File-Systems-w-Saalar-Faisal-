@@ -134,6 +134,7 @@ namespace Assignment3 //namespace
                 count = count + 1;
                 NumberFiles(current.RightSibling);
                 NumberFiles(current.LeftMostChild);
+                Console.WriteLine(count);
                 return count;
             }
             // Prints the directories in a pre-order fashion along with their files
