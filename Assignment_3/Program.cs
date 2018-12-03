@@ -146,7 +146,7 @@ namespace Assignment3 //namespace
                 Console.WriteLine(current.Directory); // print the directory
                 foreach (string d in current.File)
                 {
-                    Console.Write("-{0} ", d); // in a pre order treversal fashion 
+                    Console.WriteLine("\n -{0} ", d); // in a pre order treversal fashion 
                 }
 
                 PrintFileSystem(current.RightSibling); //calling the right sibling
