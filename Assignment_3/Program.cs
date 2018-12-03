@@ -129,12 +129,11 @@ namespace Assignment3 //namespace
             // Returns the number of files in the file system
             public int NumberFiles(Node current)    // Faulty Method 
             {
-                count++;
-
+                if (current == null)
+                    return count;
+                count = count + 1;
                 NumberFiles(current.RightSibling);
-
                 NumberFiles(current.LeftMostChild);
-
                 return count;
             }
             // Prints the directories in a pre-order fashion along with their files
