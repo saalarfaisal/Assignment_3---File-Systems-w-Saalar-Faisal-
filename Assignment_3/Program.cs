@@ -3,20 +3,20 @@
  * Assignment 3
  * Submitted by: Nikhil Pai Ganesh - 0595517
  *               Salaar Faisal - Student #
- * Description: Using the concept of a binary tree to create a filing system where the root is connects to the left most child and the further directories are considered as a right Sibling and is connected to it's left sibling
+ * Description: Using the concept of a binary tree to create a filing system.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System; //imported C# library
+using System.Collections.Generic; //imported C# library
+using System.Linq; //imported C# library
+using System.Text; //imported C# library
+using System.Threading.Tasks; //imported C# library
 
-namespace Assignment3
+namespace Assignment3 //namespace
 {
-    class Program
+    class Program //class 
     {
-        class Node
+        class Node //class 
         {
             public string Directory { get; set; } // creating a sting directory
             public List<string> File { get; set; } //creating a list of strings called file 
@@ -175,6 +175,10 @@ namespace Assignment3
 
         static void Main() // main method to call all of the methods mentioned above
         {
+            Console.WriteLine ("***********************************************************************************************************"); //Design
+            Console.WriteLine ("******************************* COIS 2020 - Data Structures and Algorithms ********************************"); //Design
+            Console.WriteLine ("************************************* Assignment - 3 File Systems  ****************************************"); //Design
+            Console.WriteLine ("***********************************************************************************************************"); //Design
             Console.Write("Enter Root Directory==>   ");  // Prompt to ask for the root directory 
             FileSystem System = new FileSystem(Console.ReadLine()); //read the root directory and initiate a file system 
             while (true)
