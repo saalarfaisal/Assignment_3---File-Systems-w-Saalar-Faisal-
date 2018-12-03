@@ -134,7 +134,7 @@ namespace Assignment3 //namespace
                 count = count + 1; 
                 NumberFiles(current.RightSibling); //Calling the right sibling 
                 NumberFiles(current.LeftMostChild); //Calling the LeftMostChild 
-                Console.WriteLine(count); //Printing out the count 
+                Console.WriteLine("Number of Files Added to the FileSystem is {0}",count); //Printing out the count 
                 return count; // return the number of values in them
             }
             // Prints the directories in a pre-order fashion along with their files
